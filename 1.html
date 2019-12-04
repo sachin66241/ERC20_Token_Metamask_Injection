@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>sachin</h3>
+     <!-- <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>  -->
+
+
+    <script>
+        
+        // if (typeof web3 !== 'undefined') {
+        //      web3 = new Web3(web3.currentProvider);
+        // } else {
+        //  // Set the provider you want from Web3.providers
+        //     web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8543"));
+        // }
+        // var connects = web3._provider.connected;
+        //  console.log(web3);
+        // // console.log(personal)
+        // console.log(connects);
+        // // var new_acc = web3.eth.personal.newAccount('prayag')
+        // // console.log("neww",new_acc)
+        // var coinbase = web3.eth.getCoinbase();
+        // console.log("MY COINBASE ACCOUNT:",coinbase);
+        // var balance = web3.eth.getBalance('0x400F9A5BfB2A37d20Fb06B032dA257A6C95c4F31');
+        // console.log("TOTAL NO OF ACCOUNT:",web3.ssh)
+        // console.log("MY COINBASE BALANCE:",balance);
+        let minABI = [
+
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "tokenOwner",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"name": "balance",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"name": "tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"name": "success",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "holder",
+				"type": "address"
+			},
+			{
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	}
+
+];
+
+   if (typeof web3 !== 'undefined') {
+             web3 = new Web3(web3.currentProvider);
+             console.log(":sammmmm",web3)
+   }
+    else {
+        console.log('No web3? You should consider trying MetaMask!');
+        web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+    }
+
+
+web3.eth.defaultAccount = web3.eth.accounts[0]
+web3.personal.unlockAccount(web3.eth.defaultAccount)
+let contractAddres="0x7bFc29E83eD89c5030D0b3e0e4D5f1E9D0B9d9Fc";
+
+let contract =  web3.eth.contract(minABI).at(contractAddres);
+
+console.log("xontract on",contract)
+
+contract.transfer("0x754f062Ee0897Eba061Aaa949A4A1Df85c75Cd10", "100",ether);
+    </script>
+
+
+    
+</body>
+</html>
